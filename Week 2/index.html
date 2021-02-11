@@ -1,19 +1,12 @@
+<head>
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+</head>
+<div class="result"></div>
 <script>
-    function afterInit() {
-        console.log('Game init voltooid')
-    }
-    
-    
-
-    class Game {
-        init(callbackFunctie){
-            callbackFunctie()
-        }
-
-        
-    }
-    game = new Game()
-    game.init(afterInit);
-
-
+const url = 'http://api.quotable.io/quotes'
+$.get( url, function( data ) {
+    $(".result").html( JSON.stringify(data) );
+    alert("Load was performed.");
+});
 </script>
