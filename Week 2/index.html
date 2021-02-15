@@ -4,9 +4,17 @@
 </head>
 <div class="result"></div>
 <script>
-const url = 'http://api.quotable.io/quotes'
-$.get( url, function( data ) {
-    $(".result").html( JSON.stringify(data) );
-    alert("Load was performed.");
+
+
+const getWeatherData = function(){
+    const url = 'http://api.quotable.io/quotes'
+    return $.get(url);
+};
+
+getWeatherData().then(d => {
+    console.log(d);
 });
+
+
+
 </script>
