@@ -1,5 +1,5 @@
 module.exports = {
-    localServerProjectPath : '<C:/...pad_naar_server_project_voor_client_bestanden>',
+    localServerProjectPath : "C:\\Users\\remko\\source\\repos\\ReversieMVCApp\\ReversieMVCApp\\wwwroot",
     files: {
         js: [
             'js/**/*.js',

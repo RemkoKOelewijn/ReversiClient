@@ -1,12 +1,19 @@
 const {src, dest} = require('gulp');
 
-const fn = function (voornaam) {
-    return function () {
-        // console.log(`Taak js is uitgevoerd, ${voornaam}!`);
-        // return Promise.resolve('Klaar');
-    
-        return src('js/*.js')
-        .pipe(dest('dist'));
+const order = require('gulp-order');
+const concat = require('gulp-concat');
+const babel = require('gulp-babel')
+
+const fn = function (backendPath, filesJs, filesJsOrder) {
+    return function () {    
+        return src(filesJs)
+            .pipe(order(filesJsOrder, {base: './'}))
+            .pipe(concat('app.js'))
+            .pipe(babel({
+                presets: ['@babel/preset-env']
+            }))
+            .pipe(dest('./dist/js'))
+            .pipe(dest(backendPath + '/dist/js'));
     };
 };
 
