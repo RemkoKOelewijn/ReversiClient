@@ -9,7 +9,6 @@
 
     <!-- Local Javascript-->
     <script src="js/feedbackWidget.js"></script>
-
     <script src="js/Game.js"></script>
 
     <!-- Latest compiled and minified CSS -->
@@ -28,17 +27,30 @@
 
 <body>
                 
-<div id="feedback-success" class="alert alert-success" role="alert" style="display:none">
+<div id="feedback" style="display:none">
     <p>Veel succes met deze module!</p>
 </div>
 
-<div id="feedback-danger" class="alert alert-danger" role="alert" style="display:none">
-    <p>Pas op voor loslopende bits.</p>
-</div>
-
-<button id="click">
-    KLIK
+<button id="showSucces">
+    showSucces
 </button>
+
+<button id="showDanger">
+    showDanger
+</button>
+
+<button id="changeSuccesText">
+    changeSuccesText
+</button>
+
+<button id="hideWidget">
+    hideWidget
+</button>
+
+
+<p id="history">
+    History: <br>
+</p>
 
 </body>
 </html>

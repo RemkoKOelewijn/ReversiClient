@@ -8,24 +8,36 @@ class FeedbackWidget{
         }
     
     show(elementId, message, type){
-        var x = document.getElementById(elementId);
-        x.style.display == "block"          
+        if(type == "succes"){
+            $(elementId).removeClass("alert alert-danger")
+            $(elementId).addClass("alert alert-success")
+            $(elementId).text(message)
+            $(elementId).attr('style', 'display:block')
+        } else {
+            $(elementId).removeClass("alert alert-succes")
+            $(elementId).addClass("alert alert-danger")
+            $(elementId).text(message)
+            $(elementId).attr('style', 'display:block')
+        }        
+        
+        this.log({
+            message: message,
+            type: type
+        })
     }
 
     hide(elementId){
-        var x = document.getElementById(elementId);
-        x.style.display = "none"
+        $(elementId).attr("style", "display:none")
     }
 
     log(message){
-        let feedbackWidgetArray = JSON.parse(localStorage.getItem("feedback-widget")) || [];
-        feedbackWidgetArray.push(JSON.stringify(message))
-
-        if(feedbackWidgetArray.length > 10) {
-            feedbackWidgetArray.shift();
+        let feedbackLogArray = JSON.parse(localStorage.getItem("feedback-widget")) || [];
+        
+        if(feedbackLogArray.length == 10){
+            feedbackLogArray.shift()
         }
-
-        localStorage.setItem("feedback-widget", JSON.stringify(feedbackWidgetArray));
+        feedbackLogArray.push(message)
+        localStorage.setItem("feedback-widget", JSON.stringify(feedbackLogArray))
     }
 
     removeLog(){
@@ -35,23 +47,34 @@ class FeedbackWidget{
     history(){
         let feedbackWidgetArray = JSON.parse(localStorage.getItem("feedback-widget")) || [];
 
-        let stringMessage = "";
         $(feedbackWidgetArray).each(function(index, value){
-            stringMessage += "type " + JSON.parse(value).type + " - " + JSON.parse(value).message + "</n>\n";
-        });
 
-        this.show(stringMessage);
+            document.getElementById("history").innerHTML += "type " + value.type + " - " + value.message + "<br>"
+        });
     }
 }
 
 $( document ).ready(function() {
-    console.log( "ready!" );
+    widgetControl = new FeedbackWidget("control")
 
-    widget = new FeedbackWidget("widget")
-    $("#click").on("click", function(){
-        console.log("KLIK!")
-        widget.show("feedback-danger")
-        console.log("HUH")
+    $("#showSucces").on("click", function(){
+        console.log("showSucces")
+        widgetControl.show("#feedback", "succes getoond", "succes")
+    })
+
+    $("#showDanger").on("click", function(){
+        console.log("showDanger")
+        widgetControl.show("#feedback", "danger getoond", "danger")
+    })
+
+    $("#changeSuccesText").on("click", function(){
+        console.log("changeSuccesText")
+        widgetControl.show("#feedback", "Tekst veranderd", "succes")
+    })
+
+    $("#hideWidget").on("click", function(){
+        console.log("hideWidget")
+        widgetControl.hide("#feedback")
     })
     });
     
