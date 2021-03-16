@@ -2,8 +2,9 @@ const {src, dest} = require('gulp');
 const concat = require('gulp-concat');
 const order = require('gulp-order');
 const babel = require('gulp-babel')
+const uglify = require('gulp-uglifyjs')
 
-const fn = function (backendPath, filesJs, filesJsOrder) {
+const jstask = function (backendPath, filesJs, filesJsOrder) {
     return function () {    
         return src(filesJs)
             .pipe(order(filesJsOrder, {base: './'}))
@@ -11,10 +12,11 @@ const fn = function (backendPath, filesJs, filesJsOrder) {
             .pipe(babel({
                 presets: ['@babel/preset-env']
             }))
+            .pipe(uglify({compress: true}))
             .pipe(dest('./dist/js'))
             .pipe(dest(backendPath + '/dist/js'));
     };
 };
 
 
-exports.js = fn;
+exports.js = jstask;

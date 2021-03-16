@@ -7,7 +7,7 @@ module.exports = {
         ],
 
         sass: [
-            'css/*.scss',
+            'css/*',
         ]
     },
     voornaam: 'Remko Koelewijn'

@@ -15,16 +15,21 @@ const Game = (function(url){
     })('/api/url')
     
     Game.Reversi = (function(){
-        color="white"
+        color = "white"
+
         placeFiche = function(x, y){
+            console.log(color)
+            square = $(`#square${x}_${y}`).find("span")
+
+            squareOccupied = square.hasClass("whitePiece") || square.hasClass("blackPiece")
+            if (squareOccupied) return
+
             console.log(`${color} piece geplaatst op: ${x}, ${y}`)
-            if(color === "white"){
+            if(color === "white" && !square.hasClass("whitePiece")){
                 color = "black"
-                square = $(`#square${x}_${y}`).find("span")
                 square.addClass("whitePiece")
             } else if (color === "black"){
                 color = "white"
-                square = $(`#square${x}_${y}`).find("span")
                 square.addClass("blackPiece")
             }
         }
