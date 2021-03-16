@@ -15,16 +15,22 @@ const Game = (function(url){
     })('/api/url')
     
     Game.Reversi = (function(){
-        console.log('hallo, vanuit module Reversi')
-
-        let configMap = {}
-
-        privateInit = function(){
-            console.log("dit is de private functie")
+        color="white"
+        placeFiche = function(x, y){
+            console.log(`${color} piece geplaatst op: ${x}, ${y}`)
+            if(color === "white"){
+                color = "black"
+                square = $(`#square${x}_${y}`).find("span")
+                square.addClass("whitePiece")
+            } else if (color === "black"){
+                color = "white"
+                square = $(`#square${x}_${y}`).find("span")
+                square.addClass("blackPiece")
+            }
         }
 
         return {
-            init: privateInit
+            placeFiche: placeFiche
         }      
     })() 
 

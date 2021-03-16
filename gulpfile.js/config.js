@@ -4,6 +4,10 @@ module.exports = {
         js: [
             'js/**/*.js',
             'js/*.js'
+        ],
+
+        sass: [
+            'css/*.scss',
         ]
     },
     voornaam: 'Remko Koelewijn'

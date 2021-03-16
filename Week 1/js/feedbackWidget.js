@@ -9,16 +9,17 @@ class FeedbackWidget{
     
     show(elementId, message, type){
         if(type == "succes"){
-            $(elementId).removeClass("alert alert-danger")
-            $(elementId).addClass("alert alert-success")
-            $(elementId).text(message)
-            $(elementId).attr('style', 'display:block')
+            $(elementId).removeClass("feedback-danger")
+            $(elementId).addClass("feedback-succes")
         } else {
-            $(elementId).removeClass("alert alert-succes")
-            $(elementId).addClass("alert alert-danger")
-            $(elementId).text(message)
-            $(elementId).attr('style', 'display:block')
-        }        
+            $(elementId).removeClass("feedback-succes")
+            $(elementId).addClass("feedback-danger")
+        }       
+        
+        $(elementId).attr('style', 'display:block')
+        $(elementId).text(message)
+        $(elementId).append("<button class=\"feedback-button\"> Akkoord </button>")
+        $(elementId).css('opacity', 1);
         
         this.log({
             message: message,
@@ -27,7 +28,7 @@ class FeedbackWidget{
     }
 
     hide(elementId){
-        $(elementId).attr("style", "display:none")
+        $(elementId).css('opacity', 0);
     }
 
     log(message){
@@ -48,7 +49,6 @@ class FeedbackWidget{
         let feedbackWidgetArray = JSON.parse(localStorage.getItem("feedback-widget")) || [];
 
         $(feedbackWidgetArray).each(function(index, value){
-
             document.getElementById("history").innerHTML += "type " + value.type + " - " + value.message + "<br>"
         });
     }

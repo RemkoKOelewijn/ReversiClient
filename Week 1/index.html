@@ -11,46 +11,147 @@
     <script src="js/feedbackWidget.js"></script>
     <script src="js/Game.js"></script>
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
+    <!-- Local Styling -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/gameStyle.sass">
 </head>
 
 <body>
-                
-<div id="feedback" style="display:none">
-    <p>Veel succes met deze module!</p>
-</div>
+<header>
+    <div id="feedback">
+    </div>
+</header>
 
-<button id="showSucces">
-    showSucces
-</button>
+<section>
+    <br>
+    <button id="showSucces" class="blueButton">
+        showSucces
+    </button>
 
-<button id="showDanger">
-    showDanger
-</button>
+    <button id="showDanger" class="blueButton">
+        showDanger
+    </button>
 
-<button id="changeSuccesText">
-    changeSuccesText
-</button>
+    <button id="changeSuccesText" class="blueButton">
+        changeSuccesText
+    </button>
 
-<button id="hideWidget">
-    hideWidget
-</button>
+    <button id="hideWidget" class="blueButton">
+        hideWidget
+    </button>
+    <br>
+    <br>
+    <div id='reversiContainer'>
+        <div id="reversiBoard">        
+            <div id="square0_0"class="boardSquare" onclick="placeFiche(0, 0)"><span></span></div>
+            <div id="square0_1"class="boardSquare" onclick="placeFiche(0, 1)"><span></span></div>
+            <div id="square0_2"class="boardSquare" onclick="placeFiche(0, 2)"><span></span></div>
+            <div id="square0_3"class="boardSquare" onclick="placeFiche(0, 3)"><span></span></div>
+            <div id="square0_4"class="boardSquare" onclick="placeFiche(0, 4)"><span></span></div>
+            <div id="square0_5"class="boardSquare" onclick="placeFiche(0, 5)"><span></span></div>
+            <div id="square0_6"class="boardSquare" onclick="placeFiche(0, 6)"><span></span></div>
+            <div id="square0_7"class="boardSquare" onclick="placeFiche(0, 7)"><span></span></div>
+            <div id="square0_8"class="boardSquare" onclick="placeFiche(0, 8)"><span></span></div>
+            <div id="square0_9"class="boardSquare" onclick="placeFiche(0, 9)"><span></span></div>
+            <div id="square1_0"class="boardSquare" onclick="placeFiche(1, 0)"><span></span></div>
+            <div id="square1_1"class="boardSquare" onclick="placeFiche(1, 1)"><span></span></div>
+            <div id="square1_2"class="boardSquare" onclick="placeFiche(1, 2)"><span></span></div>
+            <div id="square1_3"class="boardSquare" onclick="placeFiche(1, 3)"><span></span></div>
+            <div id="square1_4"class="boardSquare" onclick="placeFiche(1, 4)"><span></span></div>
+            <div id="square1_5"class="boardSquare" onclick="placeFiche(1, 5)"><span></span></div>
+            <div id="square1_6"class="boardSquare" onclick="placeFiche(1, 6)"><span></span></div>
+            <div id="square1_7"class="boardSquare" onclick="placeFiche(1, 7)"><span></span></div>
+            <div id="square1_8"class="boardSquare" onclick="placeFiche(1, 8)"><span></span></div>
+            <div id="square1_9"class="boardSquare" onclick="placeFiche(1, 9)"><span></span></div>
+            <div id="square2_0"class="boardSquare" onclick="placeFiche(2, 0)"><span></span></div>
+            <div id="square2_1"class="boardSquare" onclick="placeFiche(2, 1)"><span></span></div>
+            <div id="square2_2"class="boardSquare" onclick="placeFiche(2, 2)"><span></span></div>
+            <div id="square2_3"class="boardSquare" onclick="placeFiche(2, 3)"><span></span></div>
+            <div id="square2_4"class="boardSquare" onclick="placeFiche(2, 4)"><span></span></div>
+            <div id="square2_5"class="boardSquare" onclick="placeFiche(2, 5)"><span></span></div>
+            <div id="square2_6"class="boardSquare" onclick="placeFiche(2, 6)"><span></span></div>
+            <div id="square2_7"class="boardSquare" onclick="placeFiche(2, 7)"><span></span></div>
+            <div id="square2_8"class="boardSquare" onclick="placeFiche(2, 8)"><span></span></div>
+            <div id="square2_9"class="boardSquare" onclick="placeFiche(2, 9)"><span></span></div>
+            <div id="square3_0"class="boardSquare" onclick="placeFiche(3, 0)"><span></span></div>
+            <div id="square3_1"class="boardSquare" onclick="placeFiche(3, 1)"><span></span></div>
+            <div id="square3_2"class="boardSquare" onclick="placeFiche(3, 2)"><span></span></div>
+            <div id="square3_3"class="boardSquare" onclick="placeFiche(3, 3)"><span></span></div>
+            <div id="square3_4"class="boardSquare" onclick="placeFiche(3, 4)"><span></span></div>
+            <div id="square3_5"class="boardSquare" onclick="placeFiche(3, 5)"><span></span></div>
+            <div id="square3_6"class="boardSquare" onclick="placeFiche(3, 6)"><span></span></div>
+            <div id="square3_7"class="boardSquare" onclick="placeFiche(3, 7)"><span></span></div>
+            <div id="square3_8"class="boardSquare" onclick="placeFiche(3, 8)"><span></span></div>
+            <div id="square3_9"class="boardSquare" onclick="placeFiche(3, 9)"><span></span></div>
+            <div id="square4_0"class="boardSquare" onclick="placeFiche(4, 0)"><span></span></div>
+            <div id="square4_1"class="boardSquare" onclick="placeFiche(4, 1)"><span></span></div>
+            <div id="square4_2"class="boardSquare" onclick="placeFiche(4, 2)"><span></span></div>
+            <div id="square4_3"class="boardSquare" onclick="placeFiche(4, 3)"><span></span></div>
+            <div id="square4_4"class="boardSquare" onclick="placeFiche(4, 4)"><span></span></div>
+            <div id="square4_5"class="boardSquare" onclick="placeFiche(4, 5)"><span></span></div>
+            <div id="square4_6"class="boardSquare" onclick="placeFiche(4, 6)"><span></span></div>
+            <div id="square4_7"class="boardSquare" onclick="placeFiche(4, 7)"><span></span></div>
+            <div id="square4_8"class="boardSquare" onclick="placeFiche(4, 8)"><span></span></div>
+            <div id="square4_9"class="boardSquare" onclick="placeFiche(4, 9)"><span></span></div>
+            <div id="square5_0"class="boardSquare" onclick="placeFiche(5, 0)"><span></span></div>
+            <div id="square5_1"class="boardSquare" onclick="placeFiche(5, 1)"><span></span></div>
+            <div id="square5_2"class="boardSquare" onclick="placeFiche(5, 2)"><span></span></div>
+            <div id="square5_3"class="boardSquare" onclick="placeFiche(5, 3)"><span></span></div>
+            <div id="square5_4"class="boardSquare" onclick="placeFiche(5, 4)"><span></span></div>
+            <div id="square5_5"class="boardSquare" onclick="placeFiche(5, 5)"><span></span></div>
+            <div id="square5_6"class="boardSquare" onclick="placeFiche(5, 6)"><span></span></div>
+            <div id="square5_7"class="boardSquare" onclick="placeFiche(5, 7)"><span></span></div>
+            <div id="square5_8"class="boardSquare" onclick="placeFiche(5, 8)"><span></span></div>
+            <div id="square5_9"class="boardSquare" onclick="placeFiche(5, 9)"><span></span></div>
+            <div id="square6_0"class="boardSquare" onclick="placeFiche(6, 0)"><span></span></div>
+            <div id="square6_1"class="boardSquare" onclick="placeFiche(6, 1)"><span></span></div>
+            <div id="square6_2"class="boardSquare" onclick="placeFiche(6, 2)"><span></span></div>
+            <div id="square6_3"class="boardSquare" onclick="placeFiche(6, 3)"><span></span></div>
+            <div id="square6_4"class="boardSquare" onclick="placeFiche(6, 4)"><span></span></div>
+            <div id="square6_5"class="boardSquare" onclick="placeFiche(6, 5)"><span></span></div>
+            <div id="square6_6"class="boardSquare" onclick="placeFiche(6, 6)"><span></span></div>
+            <div id="square6_7"class="boardSquare" onclick="placeFiche(6, 7)"><span></span></div>
+            <div id="square6_8"class="boardSquare" onclick="placeFiche(6, 8)"><span></span></div>
+            <div id="square6_9"class="boardSquare" onclick="placeFiche(6, 9)"><span></span></div>
+            <div id="square7_0"class="boardSquare" onclick="placeFiche(7, 0)"><span></span></div>
+            <div id="square7_1"class="boardSquare" onclick="placeFiche(7, 1)"><span></span></div>
+            <div id="square7_2"class="boardSquare" onclick="placeFiche(7, 2)"><span></span></div>
+            <div id="square7_3"class="boardSquare" onclick="placeFiche(7, 3)"><span></span></div>
+            <div id="square7_4"class="boardSquare" onclick="placeFiche(7, 4)"><span></span></div>
+            <div id="square7_5"class="boardSquare" onclick="placeFiche(7, 5)"><span></span></div>
+            <div id="square7_6"class="boardSquare" onclick="placeFiche(7, 6)"><span></span></div>
+            <div id="square7_7"class="boardSquare" onclick="placeFiche(7, 7)"><span></span></div>
+            <div id="square7_8"class="boardSquare" onclick="placeFiche(7, 8)"><span></span></div>
+            <div id="square7_9"class="boardSquare" onclick="placeFiche(7, 9)"><span></span></div>
+            <div id="square8_0"class="boardSquare" onclick="placeFiche(8, 0)"><span></span></div>
+            <div id="square8_1"class="boardSquare" onclick="placeFiche(8, 1)"><span></span></div>
+            <div id="square8_2"class="boardSquare" onclick="placeFiche(8, 2)"><span></span></div>
+            <div id="square8_3"class="boardSquare" onclick="placeFiche(8, 3)"><span></span></div>
+            <div id="square8_4"class="boardSquare" onclick="placeFiche(8, 4)"><span></span></div>
+            <div id="square8_5"class="boardSquare" onclick="placeFiche(8, 5)"><span></span></div>
+            <div id="square8_6"class="boardSquare" onclick="placeFiche(8, 6)"><span></span></div>
+            <div id="square8_7"class="boardSquare" onclick="placeFiche(8, 7)"><span></span></div>
+            <div id="square8_8"class="boardSquare" onclick="placeFiche(8, 8)"><span></span></div>
+            <div id="square8_9"class="boardSquare" onclick="placeFiche(8, 9)"><span></span></div>
+            <div id="square9_0"class="boardSquare" onclick="placeFiche(9, 0)"><span></span></div>
+            <div id="square9_1"class="boardSquare" onclick="placeFiche(9, 1)"><span></span></div>
+            <div id="square9_2"class="boardSquare" onclick="placeFiche(9, 2)"><span></span></div>
+            <div id="square9_3"class="boardSquare" onclick="placeFiche(9, 3)"><span></span></div>
+            <div id="square9_4"class="boardSquare" onclick="placeFiche(9, 4)"><span></span></div>
+            <div id="square9_5"class="boardSquare" onclick="placeFiche(9, 5)"><span></span></div>
+            <div id="square9_6"class="boardSquare" onclick="placeFiche(9, 6)"><span></span></div>
+            <div id="square9_7"class="boardSquare" onclick="placeFiche(9, 7)"><span></span></div>
+            <div id="square9_8"class="boardSquare" onclick="placeFiche(9, 8)"><span></span></div>
+            <div id="square9_9"class="boardSquare" onclick="placeFiche(9, 9)"><span></span></div>
+        </div>
+    </div>
+</section>
 
-
-<p id="history">
-    History: <br>
-</p>
+<footer>
+    <p id='history'>
+        History: <br>
+    </p>
+</footer>
 
 </body>
 </html>

@@ -1,7 +1,6 @@
 const {src, dest} = require('gulp');
-
-const order = require('gulp-order');
 const concat = require('gulp-concat');
+const order = require('gulp-order');
 const babel = require('gulp-babel')
 
 const fn = function (backendPath, filesJs, filesJsOrder) {
@@ -16,5 +15,6 @@ const fn = function (backendPath, filesJs, filesJsOrder) {
             .pipe(dest(backendPath + '/dist/js'));
     };
 };
+
 
 exports.js = fn;
