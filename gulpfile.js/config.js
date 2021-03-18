@@ -1,5 +1,5 @@
 module.exports = {
-    localServerProjectPath : "C:\\Users\\remko\\source\\repos\\ReversieMVCApp\\ReversieMVCApp\\wwwroot",
+    localServerProjectPath : "C:\\Users\\remko\\source\\repos\\ReversiMVCApp\\ReversiMVCApp\\wwwroot\\",
     files: {
         js: [
             'js/**/*.js',
@@ -8,6 +8,10 @@ module.exports = {
 
         sass: [
             'css/*',
+        ],
+
+        vendor: [
+            'vendor/*'
         ]
     },
     voornaam: 'Remko Koelewijn'

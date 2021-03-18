@@ -12,9 +12,9 @@ const jstask = function (backendPath, filesJs, filesJsOrder) {
             .pipe(babel({
                 presets: ['@babel/preset-env']
             }))
-            .pipe(uglify({compress: true}))
+            .pipe(uglify({compress: false}))
             .pipe(dest('./dist/js'))
-            .pipe(dest(backendPath + '/dist/js'));
+            .pipe(dest(backendPath + 'js'));
     };
 };
 

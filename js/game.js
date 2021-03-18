@@ -1,3 +1,5 @@
+//TODO Implement Long Polling
+
 const Game = (function(url){
     let configMap = {
         apiUrl: url
@@ -15,13 +17,15 @@ const Game = (function(url){
     })('/api/url')
     
     Game.Reversi = (function(){
-        color = "white"
+        console.log("JOOOOO")
+        
+        var color = "white"
 
-        placeFiche = function(x, y){
+        var _placeFiche = function(x, y){
             console.log(color)
-            square = $(`#square${x}_${y}`).find("span")
+            let square = $(`#square${x}_${y}`).find("span")
 
-            squareOccupied = square.hasClass("whitePiece") || square.hasClass("blackPiece")
+            let squareOccupied = square.hasClass("whitePiece") || square.hasClass("blackPiece")
             if (squareOccupied) return
 
             console.log(`${color} piece geplaatst op: ${x}, ${y}`)
@@ -34,13 +38,15 @@ const Game = (function(url){
             }
         }
 
+        console.log("bithc2");
         return {
-            placeFiche: placeFiche
+            placeFiche: _placeFiche
         }      
+        console.log("bithc");
     })() 
 
     Game.Data = (function(){
-        dataInit = function(environment){
+        var dataInit = function(environment){
             stateMap.environment = environment 
             if(environment == 'development'){
                 return getMockData()
@@ -92,7 +98,7 @@ const Game = (function(url){
 
         let stateMap;
 
-        privateInit = function(){
+        var privateInit = function(){
             _getCurrentGameState();
             console.log("dit is de private functie")
         }

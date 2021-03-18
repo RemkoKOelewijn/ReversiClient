@@ -8,9 +8,12 @@ const _html = require('./tasks/html').html();
 
 const sassTask = require('./tasks/sass').sass(config.localServerProjectPath, config.files.sass);
 
+const vendorTask = require('./tasks/vendor.js').vendorTask(config.localServerProjectPath, config.files.vendor);
+
 const watchFiles = () => {
      watch(['./css/*.scss', './features/**/*.scss'], series(sass));
  }; 
 
 exports.default = series(_html, js, sassTask)
+exports.vendor = vendorTask
 exports.watch = watchFiles

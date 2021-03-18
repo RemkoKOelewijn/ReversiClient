@@ -55,7 +55,7 @@ class FeedbackWidget{
 }
 
 $( document ).ready(function() {
-    widgetControl = new FeedbackWidget("control")
+    var widgetControl = new FeedbackWidget("control")
 
     $("#showSucces").on("click", function(){
         console.log("showSucces")
