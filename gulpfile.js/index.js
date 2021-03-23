@@ -10,6 +10,8 @@ const sassTask = require('./tasks/sass').sass(config.localServerProjectPath, con
 
 const vendorTask = require('./tasks/vendor.js').vendorTask(config.localServerProjectPath, config.files.vendor);
 
+const templateTask = require('./tasks/templates.js').templates(config.files.templates)
+
 const watchFiles = () => {
      watch(['./css/*.scss', './features/**/*.scss'], series(sass));
  }; 
@@ -17,3 +19,4 @@ const watchFiles = () => {
 exports.default = series(_html, js, sassTask)
 exports.vendor = vendorTask
 exports.watch = watchFiles
+exports.templates = templateTask

@@ -1,27 +1,49 @@
 //TODO Implement Long Polling
 
-const Game = (function(url){
+const Game = (function(url, speltoken){
     let configMap = {
-        apiUrl: url
+        apiUrl: url,
+        spelToken: speltoken
     }
 
-    const privateInit = function(){
-        console.log(configMap.apiUrl);
+    const _getApiUrl = function(){
+        return configMap.apiUrl
+    }
+
+    const _getSpelToken = function(){
+        return configMap.spelToken
     }
 
     // Waarde/object geretourneerd aan de outer scope
     return {
-        init: privateInit
+        getApiUrl: _getApiUrl,
+        getSpelToken: _getSpelToken
     }
 
-    })('/api/url')
+    })('https://localhost:44395/api/', "2c250846-cdda-4d3b-8745-0fea08574a74")
     
-    Game.Reversi = (function(){
-        console.log("JOOOOO")
+    Game.Reversi = ( function() {
         
+        $.get(Game.getApiUrl() + "spel/" + Game.getSpelToken() + "/bord",
+        function(data){
+            for(var i = 0; i < data.length; i++){
+                console.log(data[i])
+                var _array = data[i]
+                for(var j = 0; j < _array.length; j++){
+                    var kleur = _array[j]
+                    if(kleur != 0){
+                        console.log("J = " + j + ", I = " + i)
+                        console.log(kleur)
+                        _placeFiche(i, j, color)
+                    }
+                }
+            }
+        })
+            
+
         var color = "white"
 
-        var _placeFiche = function(x, y){
+        var _placeFiche = function(x, y, color){
             console.log(color)
             let square = $(`#square${x}_${y}`).find("span")
 
@@ -38,11 +60,9 @@ const Game = (function(url){
             }
         }
 
-        console.log("bithc2");
         return {
             placeFiche: _placeFiche
         }      
-        console.log("bithc");
     })() 
 
     Game.Data = (function(){
@@ -51,7 +71,7 @@ const Game = (function(url){
             if(environment == 'development'){
                 return getMockData()
             } else if(environment == 'production'){
-                return _get('api/Spel/Beurt')
+                return _get(configMap.apiUrl + 'Spel/Beurt')
             } else {
                 throw new Error("Environment " + environment + " is niet geldig!")
             }        
@@ -79,7 +99,7 @@ const Game = (function(url){
         const _get = function(url){
                 return $.get(url)
             .then(r => {
-                return r
+                console.log(r)
             }).catch(e => {
                 console.log(e.message);
             });
@@ -106,7 +126,7 @@ const Game = (function(url){
         const _getGameState = function(){
             //aanvraag via Game.Data
             //controle of ontvangen data valide is
-            let gameState = Game.Data.get("/api/Spel/Beurt/<token>")
+            let gameState = Game.Data.get("https://localhost:44395/api/spel")
             if(gameState == 0 || gameState == 1 || gameState == 2){
                 return gameState
             } else {

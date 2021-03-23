@@ -12,6 +12,10 @@ module.exports = {
 
         vendor: [
             'vendor/*'
+        ],
+
+        templates: [
+            'templates/**/*.hbs'
         ]
     },
     voornaam: 'Remko Koelewijn'
